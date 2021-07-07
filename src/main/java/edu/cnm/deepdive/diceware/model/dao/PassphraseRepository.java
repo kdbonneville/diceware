@@ -6,4 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface PassphraseRepository extends JpaRepository<Passphrase, UUID> {
 
+  Iterable<Passphrase> getAllByOrderByCreatedAsc();
+
+  Iterable<Passphrase> getAllByOrderByCreatedDesc();
 }
