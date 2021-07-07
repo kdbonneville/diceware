@@ -2,6 +2,7 @@ package edu.cnm.deepdive.diceware.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,6 +37,7 @@ public class Passphrase {
   private Date created;
 
   @Transient
+  @JsonProperty(access = Access.WRITE_ONLY)
   private int length;
 
   @OneToMany(fetch = FetchType.EAGER, mappedBy = "passphrase",
@@ -51,7 +53,6 @@ public class Passphrase {
     return created;
   }
 
-  @JsonIgnore
   public int getLength() {
     return length;
   }
